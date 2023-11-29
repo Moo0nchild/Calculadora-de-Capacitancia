@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  /* background: #6F36FF; */
+  /* background: #363333; */
+  background: #2E294E;
+}
+
+.titulo { /* Estilos del titulo */
+  position: fixed;
+  margin-left: 20px;
+  margin-top: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.bateria { /* Estilos de la imagen de la bateria */
+  position: fixed;
+  width: 140px;
+  height: 140px;
+  margin-left: 40px;
+  margin-top: 227px;
+}
+
+/* Estilos de las lineas grises */
+.circuito-horizontal1 { 
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  margin-left: 100px;
+  margin-top: -10px;
+}
+
+.circuito-vertical1 {
+    position: fixed;
+    width: 300px;
+    height: 100px;
+    margin-top: 133px;
+    margin-left: -40px;
+}
+  
+.circuito-vertical2 {
+    position: fixed;
+    width: 300px;
+    height: 100px;
+    margin-top: 358px;
+    margin-left: -40px;
+}
+
+.baldosa1-vertical {
+    position: fixed;
+    width: 100px;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: 350px;
+}
+
+.baldosa2-vertical {
+    position: fixed;
+    width: 100px;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: 400px;
+}
+
+.circuito-horizontal2 {
+    position: fixed;
+    width: 200px;
+    height: 300px;
+    margin-left: 440px;
+    margin-top: -10px;
+}
+
+.baldosa3-vertical{
+    position: fixed;
+    width: 100px;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: 580px;
+}
+
+.circuito-horizontal3 {
+    position: fixed;
+    width: 200px;
+    height: 300px;
+    margin-left: 690px;
+    margin-top: -10px;
+}
+
+.baldosa4-vertical {
+    position: fixed;
+    width: 100px;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: 650px;
+}
+
+.baldosa5-vertical {
+    position: fixed;
+    width: 100px;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: 840px;
+}
+
+.baldosa6-vertical {
+    position: fixed;
+    width: 100px;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: 890px;
+}
+
+.circuito-horizontal4 {
+    position: fixed;
+    width: 200px;
+    height: 300px;
+    margin-left: 940px;
+    margin-top: -10px;
+}
+
+.circuito-horizontal10 {
+    position: fixed;
+    width: 1078px;
+    height: 300px;
+    margin-left: 80px;
+    margin-top: 300px;
+}
+  
+.circuito-vertical3 {
+    position: fixed;
+    width: 300px;
+    height: 325px;
+    margin-top: 130px;
+    margin-left: 982px;
+}
+
+/* Estilos de los sliders */
+.slider1 {
+  position: fixed;
+  margin-left: 300px;
+  margin-top: 130px;
+  width: 100px;
+  height: 10px;
+  writing-mode: bt-lr; 
+  transform: rotate(-90deg);
+}
+
+.slider2 {
+  position: fixed;
+  margin-left: 540px;
+  margin-top: 130px;
+  width: 100px;
+  height: 10px;
+  writing-mode: bt-lr; 
+  transform: rotate(-90deg);
+}
+
+.slider3 {
+  position: fixed;
+  margin-left: 370px;
+  margin-top: 240px;
+  width: 100px;
+  height: 10px;
+}
+
+.slider4 {
+  position: fixed;
+  margin-left: 610px;
+  margin-top: 240px;
+  width: 100px;
+  height: 10px;
+}
+
+.slider5 {
+    position: fixed;
+    margin-left: 790px;
+    margin-top: 130px;
+    width: 100px;
+    height: 10px;
+    writing-mode: bt-lr; 
+    transform: rotate(-90deg);
+}
+
+.slider6 {
+    position: fixed;
+    margin-left: 860px;
+    margin-top: 240px;
+    width: 100px;
+    height: 10px;
+}
+
+/* Estilos de los inputs de separacion */
+.separacion1 {
+  position: fixed;
+  width: 65px;
+  border-radius: 20px;
+  border: none;
+  margin-top: 130px;
+  margin-left: 510px;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+.separacion2 {
+  position: fixed;
+  width: 65px;
+  border-radius: 20px;
+  border: none;
+  margin-top: 130px;
+  margin-left: 270px;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+.separacion3 {
+  position: fixed;
+  width: 65px;
+  border-radius: 20px;
+  border: none;
+  margin-top: 235px;
+  margin-left: 295px;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+.separacion4 {
+  position: fixed;
+  width: 65px;
+  border-radius: 20px;
+  border: none;
+  margin-top: 235px;
+  margin-left: 530px;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+.separacion5 {
+    position: fixed;
+    width: 65px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 130px;
+    margin-left: 760px;
+    padding-left: 5px;
+    font-weight: 600;
+}
+
+.separacion6 {
+    position: fixed;
+    width: 65px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 235px;
+    margin-left: 780px;
+    padding-left: 5px;
+    font-weight: 600;
+}
+
+/* Estilos del area de calculo */
+.label-container {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  margin-left: 350px;
+  margin-top: 650px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.distancia-placas {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.distancia-placas input {
+  border-radius: 8px;
+  border: none;
+  height: 20px;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+.distancia-placas span {
+  color: white;
+}
+
+.capacitancia-individual {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.capacitancia-individual input {
+  border-radius: 8px;
+  border: none;
+  height: 20px;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+.capacitancia-individual span {
+  color: white;
+}
+
+.capacitancia-total {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.capacitancia-total input {
+  border-radius: 8px;
+  border: none;
+  height: 20px;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+.capacitancia-total span {
+  color: white;
+}
+
+.boton-paralelo {
+  position: fixed;
+  color: white;
+  border: none;
+  background-color: #dc143c;
+  border-radius: 30px;
+  padding: 10px;
+  margin-top: 600px;
+  margin-left: 1170px;
+  font-weight: 600;
+}
+
+.boton-paralelo:hover {
+  cursor: pointer;
+  background-color: #ff6b7e;
+}
+
+/* Slider Voltaje Bateria */
+.voltaje-bateria {
+  position: fixed;
+  margin-left: 60px;
+  margin-top: 295px;
+  width: 100px;
+  height: 10px;
+  writing-mode: bt-lr; 
+  transform: rotate(-90deg);
+}

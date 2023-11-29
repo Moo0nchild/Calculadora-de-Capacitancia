@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Capacitancia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2 class="titulo">Calculadora de Capacitancia</h2>
+  <div class="capacitores"> <!-- Aqui estan el modelo del capacitor -->
+    <img class="bateria" src="Bateria.png" alt="#">
+    <img class="circuito-horizontal1" src="Horizontal.png" alt="#">
+    <img class="circuito-horizontal2" src="Horizontal.png" alt="#">
+    <img class="circuito-vertical1" src="Vertical.png" alt="#">
+    <img class="circuito-vertical2" src="Vertical.png" alt="#">
+    <img id= "baldosa1-intermedio-mid" class="baldosa1-intermedio-mid" src="nenennenenen.png" alt="#">
+    <img id="circuito-vertical3-mid" class="circuito-vertical3-mid" src="Vertical.png" alt="#">
+    <img id="circuito-vertical4-mid" class="circuito-vertical4-mid" src="Vertical.png" alt="#">
+    <img id= "baldosa2-intermedio-mid" class="baldosa2-intermedio-mid" src="nenennenenen.png" alt="#">
+    <img class="circuito-horizontal3" src="Horizontal.png" alt="#">
+    <img class="circuito-horizontal4" src="Horizontal.png" alt="#">
+    <img id= "baldosa3-intermedio-mid" class="baldosa3-intermedio-mid" src="nenennenenen.png" alt="#">
+    <img id="circuito-vertical5-mid" class="circuito-vertical5-mid" src="Vertical.png" alt="#">
+    <img id="circuito-vertical6-mid" class="circuito-vertical6-mid" src="Vertical.png" alt="#">
+    <img id= "baldosa4-intermedio-mid" class="baldosa4-intermedio-mid" src="nenennenenen.png" alt="#">
+  </div>
+
+  <form action="index2.html">
+    <label for="">
+      <button class="boton-serie" ><span>Capacitor en Serie</span></button>
+    </label>
+  </form>
+
+
+  <div> <!-- Aqui estan los inputs -->
+    <input type="range" class="voltaje-bateria" min="0" max="100" value="50"> <!-- Slider voltaje bateria -->
+    <!-- Estos son los sliders, aqui se maneja la separacion de las placas -->
+    <input type="range" class="slider1" min="0" max="100" value="50"> 
+    <input type="range" class="slider2" min="0" max="100" value="50"> 
+    <input type="range" class="slider3" min="0" max="100" value="50">
+    <input type="range" class="slider4" min="0" max="100" value="50">
+    <label for="">
+      <input id="separacion1" type="text" class="separacion1" value="7.5 mm">  
+      <input id="separacion2" type="text" class="separacion2" value="7.5 mm">
+      <input id="separacion3" type="text" class="separacion3"  value = "250 mm²">
+      <input id="separacion4" type="text" class="separacion4" value="250 mm²">
+    </label>
+    <!-- Estos son los inputs donde se va a mostrar la capacitancia -->
+    <label for="">
+      <div class="label-container">
+        <!-- Este son los inputs donde se muestra el area que ocupa la placa -->
+        <div class="distancia-placas">
+          <!-- <span>Area de las Placas: </span><input type="text">  ~ ESTO NO VA ~ -->
+        </div>
+        <!-- Estos son los inputs donde se muestra la capacitancia individual de los capacitores -->
+        <div class="capacitancia-individual">
+          <span>Capacitancia 1: </span><input id="capacitancia1" type="text">
+          <span>Capacitancia 2: </span><input id="capacitancia2" type="text">
+        </div>
+        <!-- Este es el input de la capacitancia total -->
+        <div class="capacitancia-total">
+          <span>Capacitancia Total: </span><input id="capacitanciaTotal" type="text">
+        </div>
+        <!-- Botones para añadir mas capacitores (4 maximos) -->
+        <div class="botones-add">
+          <button id="añadircapacitor" class="boton"><span>Añadir Capacitor</span></button>
+          <button id="eliminarCapacitor" class="boton"><span>Eliminar Capacitor</span></button>
+        </div>
+      </div>
+    </label>
+  </div>
+</body>
+<script src="script.js"></script>
+</html>
