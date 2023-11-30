@@ -320,3 +320,39 @@ document.addEventListener("DOMContentLoaded", function (){
       return `${coeficiente.toFixed(2)}×10${exponenteUnicode}`;
     }
 })
+
+function mostrarOcultarCodigo() {
+  let checkBox1 = document.getElementById("carAlmacenadaCheck")
+  let checkBox2 = document.getElementById("difPotencialCheck")
+  let checkBox3 = document.getElementById("trabajoCheck")
+  let checkBox4 = document.getElementById("EnAlmacenadaCheck")
+  let codigoDiv1 = document.getElementById("cargaAlmacenada")
+  let codigoDiv2 = document.getElementById("diferenciaPotencial")
+  let codigoDiv3 = document.getElementById("trabj")
+  let codigoDiv4 = document.getElementById("energiaAlmacenada")
+
+  if (checkBox1.checked) {
+      codigoDiv1.style.display = "block"
+  } else {
+      codigoDiv1.style.display = "none"
+  }
+
+  if (checkBox2.checked) {
+    codigoDiv2.style.display = "block"
+  } else {
+    codigoDiv2.style.display = "none"
+  }
+
+  if (checkBox3.checked) {
+    codigoDiv3.style.display = "block"
+  } else {
+    codigoDiv3.style.display = "none"
+  }
+
+  if (checkBox4.checked) {
+    codigoDiv4.style.display = "block"
+  } else {
+    codigoDiv4.style.display = "none"
+  }
+}
+

@@ -40,7 +40,7 @@
     <input type="range" class="slider3" min="0" max="100" value="50">
     <input type="range" class="slider4" min="0" max="100" value="50">
     <label for="">
-      <input type="text" class="inp-voltaje">
+      <input type="text" class="inp-voltaje" value="0 V">
       <!-- --------------------------------------------------------- -->
       <input id="separacion1" type="text" class="separacion1" value="7.5 mm">  
       <input id="separacion2" type="text" class="separacion2" value="7.5 mm">
@@ -68,47 +68,47 @@
     </label>
   </div>
 
-  <div class="container-barras">
+  <div id="cargaAlmacenada" class="container-barras">
     <h3>Carga Almacenada</h3>
     <div class="barra-capacitor">
-      <p><span>Capacitor 1</span>40C</p> <!-- Donde estan los numeros, va el porcentaje -->
-      <div class="progreso" style="--wth:40%"></div> <!-- --wth -> Porcentaje de la barra de progreso -->
+      <p id="carga1"><span>Capacitor 1</span>0C</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso" style="--wth:0%"></div> <!-- --wth -> Porcentaje de la barra de progreso -->
     </div>
     <div class="barra-capacitor">
-      <p><span>Capacitor 2</span>38C</p> <!-- Donde estan los numeros, va el porcentaje -->
-      <div class="progreso" style="--wth:38%"></div>
+      <p id="carga2"><span>Capacitor 2</span>0C</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso" style="--wth:0%"></div>
     </div>
     <div class="barra-capacitor">
-      <p><span>Capacitor 3</span>20C</p> <!-- Donde estan los numeros, va el porcentaje -->
-      <div class="progreso" style="--wth:20%"></div>
+      <p id="carga3"><span>Capacitor 3</span>0C</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso" style="--wth:0%"></div>
     </div>
     <div class="barra-capacitor">
-      <p><span>Capacitor 4</span>50C</p> <!-- Donde estan los numeros, va el porcentaje -->
-      <div class="progreso" style="--wth:50%"></div>
+      <p id="carga4"><span>Capacitor 4</span>0C</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso" style="--wth:0%"></div>
     </div>
   </div>
 
-  <div class="container-barras-diferencia">
+  <div id="diferenciaPotencial" class="container-barras-diferencia">
     <h3>Diferencia de Potencial</h3>
     <div class="barra-capacitor-diferencia">
-      <p><span>Capacitor 1</span>50v</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <p id="potencial1"><span>Capacitor 1</span>0v</p> <!-- Donde estan los numeros, va el porcentaje -->
       <div class="progreso-diferencia" style="--wth:50%"></div> <!-- --wth -> Porcentaje de la barra de progreso -->
     </div>
     <div class="barra-capacitor-diferencia">
-      <p><span>Capacitor 2</span>80v</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <p id="potencial2"><span>Capacitor 2</span>0v</p> <!-- Donde estan los numeros, va el porcentaje -->
       <div class="progreso-diferencia" style="--wth:80%"></div>
     </div>
     <div class="barra-capacitor-diferencia">
-      <p><span>Capacitor 3</span>20v</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <p id="potencial3"><span>Capacitor 3</span>0v</p> 
       <div class="progreso-diferencia" style="--wth:20%"></div>
     </div>
     <div class="barra-capacitor-diferencia">
-      <p><span>Capacitor 4</span>50v</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <p id="potencial4"><span>Capacitor 4</span>0v</p>
       <div class="progreso-diferencia" style="--wth:50%"></div>
     </div>
   </div>
 
-  <div class="container-barras-trabajo">
+  <div id="trabj" class="container-barras-trabajo">
     <h3>Trabajo</h3>
     <div class="barra-capacitor-trabajo">
       <p><span>Capacitor 1</span>30J</p> <!-- Donde estan los numeros, va el porcentaje -->
@@ -128,9 +128,22 @@
     </div>
   </div>
 
-  <div class="container-barras-energia">
+  <div id="energiaAlmacenada" class="container-barras-energia">
+    <h3>Energia Almacenada</h3>
     <div class="barra-capacitor-energia">
-      <p><span>Energia Total</span>30J</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <p><span>Capacitor 1</span>30J</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso-energia" style="--wth:30%"></div> <!-- --wth -> Porcentaje de la barra de progreso -->
+    </div>
+    <div class="barra-capacitor-energia">
+      <p><span>Capacitor 2</span>30J</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso-energia" style="--wth:30%"></div> <!-- --wth -> Porcentaje de la barra de progreso -->
+    </div>
+    <div class="barra-capacitor-energia">
+      <p><span>Capacitor 3</span>30J</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso-energia" style="--wth:30%"></div> <!-- --wth -> Porcentaje de la barra de progreso -->
+    </div>
+    <div class="barra-capacitor-energia">
+      <p><span>Capacitor 4</span>30J</p> <!-- Donde estan los numeros, va el porcentaje -->
       <div class="progreso-energia" style="--wth:30%"></div> <!-- --wth -> Porcentaje de la barra de progreso -->
     </div>
   </div>
@@ -138,16 +151,16 @@
   <div class="checkbox-container">
     <label for="">
       <div class="checkboxes">
-        <input type="checkbox">Carga Almacenada
+        <input type="checkbox" id="carAlmacenadaCheck" onchange="mostrarOcultarCodigo()">Carga Almacenada
       </div>
       <div class="checkboxes">
-        <input type="checkbox">Diferencia de Potencial
+        <input type="checkbox" id="difPotencialCheck" onchange="mostrarOcultarCodigo()">Diferencia de Potencial
       </div>
       <div class="checkboxes">
-        <input type="checkbox">Trabajo
+        <input type="checkbox" id="trabajoCheck" onchange="mostrarOcultarCodigo()">Trabajo
       </div>
       <div class="checkboxes">
-        <input type="checkbox">Energia Almacenada
+        <input type="checkbox" id="EnAlmacenadaCheck" onchange="mostrarOcultarCodigo()">Energia Almacenada
       </div>
     </label>
   </div>

@@ -268,7 +268,7 @@ body{
   width: 350px;
   height: 400px;
   margin-left: 10px;
-  margin-top: 650px;
+  margin-top: 1113px;
   background-color: rgba(0, 0, 0, 0.7);
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
@@ -379,9 +379,10 @@ body{
 }
 
 .container-barras {
+  display: none;
   border-radius: 20px;
   position: absolute;
-  margin-top: 765px;
+  margin-top: 1226px;
   margin-left: 365px;
   color: white;
   width: 320px;
@@ -426,9 +427,10 @@ body{
 
 
 .container-barras-diferencia {
+  display: none;
   border-radius: 20px;
   position: absolute;
-  margin-top: 765px;
+  margin-top: 1226px;
   margin-left: 690px;
   color: white;
   width: 320px;
@@ -472,9 +474,10 @@ body{
 } 
 
 .container-barras-trabajo {
+  display: none;
   border-radius: 20px;
   position: absolute;
-  margin-top: 765px;
+  margin-top: 1226px;
   margin-left: 1015px;
   color: white;
   width: 320px;
@@ -518,10 +521,11 @@ body{
 } 
 
 .container-barras-energia {
+  display: none;
   border-radius: 20px;
-  position: fixed;
-  margin-top: 20px;
-  margin-left: 730px;
+  position: absolute;
+  margin-top: 930px;
+  margin-left: 690px;
   color: white;
   width: 320px;
   background: rgba(0, 0, 0, 0.7);
@@ -561,8 +565,7 @@ body{
   width: var(--wth);
   height: 100%;
   background-color: #B7990D;
-}
-
+} 
 .checkbox-container {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.7);
