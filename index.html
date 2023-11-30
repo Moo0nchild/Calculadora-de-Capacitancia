@@ -9,7 +9,7 @@
 <body>
   <h2 class="titulo">Calculadora de Capacitancia</h2>
   <div class="capacitores"> <!-- Aqui estan el modelo del capacitor -->
-    <img class="bateria" src="Bateria.png" alt="#">
+    <img class="bateria" src="Bateria2-Positivo.png" alt="#">
     <img class="circuito-horizontal1" src="Horizontal.png" alt="#">
     <img class="circuito-horizontal2" src="Horizontal.png" alt="#">
     <img class="circuito-vertical1" src="Vertical.png" alt="#">
@@ -32,6 +32,25 @@
     </label>
   </form>
 
+  <div class="container-barras">
+    <h3>Energia Almacenada</h3>
+    <div class="barra-capacitor">
+      <p><span>Capacitor 1</span>50v</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso" style="--wth:50%"></div> <!-- --wth -> Porcentaje de la barra de progreso -->
+    </div>
+    <div class="barra-capacitor">
+      <p><span>Capacitor 2</span>80v</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso" style="--wth:80%"></div>
+    </div>
+    <div class="barra-capacitor">
+      <p><span>Capacitor 3</span>20v</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso" style="--wth:20%"></div>
+    </div>
+    <div class="barra-capacitor">
+      <p><span>Capacitor 4</span>50v</p> <!-- Donde estan los numeros, va el porcentaje -->
+      <div class="progreso" style="--wth:50%"></div>
+    </div>
+  </div>
 
   <div> <!-- Aqui estan los inputs -->
     <input type="range" class="voltaje-bateria" min="0" max="100" value="50"> <!-- Slider voltaje bateria -->
