@@ -29,6 +29,7 @@ https://docs.google.com/document/d/11asJzMPtHjgv74U3lagFELML4oBvU10Scs6OGg9r6LI/
 1. Clona este repositorio en tu máquina local: `https://github.com/mibichoandafugao/Calculadora-de-Capacitancia.git`.
 2. Accede al directorio del proyecto.
 3. Explora las carpetas específicas para acceder a código, documentos y otros recursos.
+4. Si lo deseas, puedes visitar el simulador aqui: `https://calculadoradecapacitancia.netlify.app`
 
 ## Contribuciones
 
