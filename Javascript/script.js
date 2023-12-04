@@ -296,12 +296,12 @@ document.addEventListener("DOMContentLoaded", function () {
       contenedor.appendChild(nuevoSpan);
       contenedor.appendChild(nuevoInput)
       const nuevoHTML = `
-          <img class="circuito-horizontal5" src="Horizontal.png" alt="#">
-          <img class="circuito-horizontal6" src="Horizontal.png" alt="#">
-          <img id="baldosa5-intermedio-mid" class="baldosa5-intermedio-mid" src="nenennenenen.png" alt="#">
-          <img id="circuito-vertical7-mid" class="circuito-vertical7-mid" src="Vertical.png" alt="#">
-          <img id="circuito-vertical8-mid" class="circuito-vertical8-mid" src="Vertical.png" alt="#">
-          <img id="baldosa6-intermedio-mid" class="baldosa6-intermedio-mid" src="nenennenenen.png" alt="#"> 
+          <img class="circuito-horizontal5" src="/Assets/Horizontal.png" alt="#">
+          <img class="circuito-horizontal6" src="/Assets/Horizontal.png" alt="#">
+          <img id="baldosa5-intermedio-mid" class="baldosa5-intermedio-mid" src="/Assets/BaldosaOG.png" alt="#">
+          <img id="circuito-vertical7-mid" class="circuito-vertical7-mid" src="/Assets/Vertical.png" alt="#">
+          <img id="circuito-vertical8-mid" class="circuito-vertical8-mid" src="/Assets/Vertical.png" alt="#">
+          <img id="baldosa6-intermedio-mid" class="baldosa6-intermedio-mid" src="/Assets/BaldosaOG.png" alt="#"> 
           <input type="range" class="slider-añadido1" min="0" max="100" value="50">
           <input type="range" class="slider-añadido2" min="0" max="100" value="50"> 
           <input id="separacion5" type="text" class="separacion5" value="7.5 mm"> 
@@ -356,12 +356,12 @@ document.addEventListener("DOMContentLoaded", function () {
       contenedor.appendChild(nuevoSpan);
       contenedor.appendChild(nuevoInput);
       const nuevoHTML = `
-          <img class="circuito-horizontal7" src="Horizontal.png" alt="#">
-          <img class="circuito-horizontal8" src="Horizontal.png" alt="#">
-          <img id="baldosa7-intermedio-mid" class="baldosa7-intermedio-mid" src="nenennenenen.png" alt="#">
-          <img id="circuito-vertical9-mid" class="circuito-vertical9-mid" src="Vertical.png" alt="#">
-          <img id="circuito-vertical10-mid" class="circuito-vertical10-mid" src="Vertical.png" alt="#">
-          <img id="baldosa8-intermedio-mid" class="baldosa8-intermedio-mid" src="nenennenenen.png" alt="#">
+          <img class="circuito-horizontal7" src="/Assets/Horizontal.png" alt="#">
+          <img class="circuito-horizontal8" src="/Assets/Horizontal.png" alt="#">
+          <img id="baldosa7-intermedio-mid" class="baldosa7-intermedio-mid" src="/Assets/BaldosaOG.png" alt="#">
+          <img id="circuito-vertical9-mid" class="circuito-vertical9-mid" src="/Assets/Vertical.png" alt="#">
+          <img id="circuito-vertical10-mid" class="circuito-vertical10-mid" src="/Assets/Vertical.png" alt="#">
+          <img id="baldosa8-intermedio-mid" class="baldosa8-intermedio-mid" src="/Assets/BaldosaOG.png" alt="#">
           <input type="range" class="slider-añadido3" min="0" max="100" value="50">
           <input type="range" class="slider-añadido4" min="0" max="100" value="50"> 
           <input id="separacion7" type="text" class="separacion7" value="7.5 mm"> 
@@ -504,9 +504,9 @@ document.addEventListener("DOMContentLoaded", function () {
     inputVoltaje.value= diferenciaPotencialFuente.toFixed(2) +" V"
     const imgBateria = document.querySelector(".bateria")
     if(valorSliderVoltaje<50){
-      imgBateria.src= "Bateria2-Negativo.png"
+      imgBateria.src= "/Assets/Bateria2-Negativo.png"
     }else{
-      imgBateria.src= "Bateria2-Positivo.png"
+      imgBateria.src= "/Assets/Bateria2-Positivo.png"
     }
     actualizarInputEnergia()
     

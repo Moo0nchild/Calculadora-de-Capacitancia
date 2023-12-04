@@ -324,9 +324,9 @@ document.addEventListener("DOMContentLoaded", function (){
           inputVoltaje.value= diferenciaPotencialFuente.toFixed(2) +" V"
           const imgBateria = document.querySelector(".bateria")
           if(valorSliderVoltaje<50){
-            imgBateria.src= "Bateria2-Negativo.png"
+            imgBateria.src= "/Assets/Bateria2-Negativo.png"
           }else{
-            imgBateria.src= "Bateria2-Positivo.png"
+            imgBateria.src= "/Assets/Bateria2-Positivo.png"
           }
           actualizarInputEnergia()
           actualizarInputTrabajo()
@@ -527,42 +527,144 @@ document.addEventListener("DOMContentLoaded", function (){
       Bateria()
 })
 
+
+
 // Funciones extras
   function mostrarOcultarCodigo() {
     let checkBox1 = document.getElementById("carAlmacenadaCheck")
     let checkBox2 = document.getElementById("difPotencialCheck")
     let checkBox3 = document.getElementById("trabajoCheck")
     let checkBox4 = document.getElementById("EnAlmacenadaCheck")
-    let codigoDiv1 = document.getElementById("cargaAlmacenada")
-    let codigoDiv2 = document.getElementById("diferenciaPotencial")
-    let codigoDiv3 = document.getElementById("trabj")
-    let codigoDiv4 = document.getElementById("energiaAlmacenada")
+    let codigoDivCarga = document.getElementById("cargaAlmacenada")
+    let codigoDivPotencial = document.getElementById("diferenciaPotencial")
+    let codigoDivTrabajo = document.getElementById("trabj")
+    let codigoDivEnergia = document.getElementById("energiaAlmacenada")
 
+    //Obtener estilos 
+    var estilosCarga = window.getComputedStyle(codigoDivCarga);
+    var estilosPotencial = window.getComputedStyle(codigoDivPotencial);
+    var estilosTrabajo = window.getComputedStyle(codigoDivTrabajo);
+    var estilosEnergia = window.getComputedStyle(codigoDivEnergia)
+    
+    //carga
     if (checkBox1.checked) {
-        codigoDiv1.style.display = "block"
+      codigoDivCarga.style.display = "block"
+      if(((estilosEnergia.getPropertyValue('margin-left') == "295px") &&  (checkBox4.checked )) ||
+      ((estilosTrabajo.getPropertyValue('margin-left') == "295px") &&  ( checkBox3.checked)) ||
+      ((estilosPotencial.getPropertyValue('margin-left') == "295px") && (checkBox2.checked)) 
+      ){
+        if(((estilosEnergia.getPropertyValue('margin-left') == "580px") &&  (checkBox4.checked )) ||
+        ((estilosTrabajo.getPropertyValue('margin-left') == "580px") &&  ( checkBox3.checked)) ||
+        ((estilosPotencial.getPropertyValue('margin-left') == "580px") && (checkBox2.checked)) 
+        ){
+            if(((estilosEnergia.getPropertyValue('margin-left') == "865px") &&  (checkBox4.checked )) ||
+            ((estilosTrabajo.getPropertyValue('margin-left') == "865px") &&  ( checkBox3.checked)) ||
+            ((estilosPotencial.getPropertyValue('margin-left') == "865px") && (checkBox2.checked)) 
+            ){
+              codigoDivCarga.style.marginLeft = "1150px"
+            }else{
+              codigoDivCarga.style.marginLeft = "865px"
+            }
+        }else{
+          codigoDivCarga.style.marginLeft = "580px"
+        }
+   }else{
+    codigoDivCarga.style.marginLeft = "295px"
+   }
+      
     } else {
-        codigoDiv1.style.display = "none"
+      codigoDivCarga.style.display = "none"
     }
 
+    //diferencia
     if (checkBox2.checked) {
-      codigoDiv2.style.display = "block"
+      codigoDivPotencial.style.display = "block"
+        if(((estilosEnergia.getPropertyValue('margin-left') == "295px") &&  (checkBox4.checked )) ||
+           ((estilosTrabajo.getPropertyValue('margin-left') == "295px") &&  ( checkBox3.checked)) ||
+           ((estilosCarga.getPropertyValue('margin-left') == "295px") && (checkBox1.checked)) 
+        ){
+          if(((estilosEnergia.getPropertyValue('margin-left') == "580px") &&  (checkBox4.checked )) ||
+          ((estilosTrabajo.getPropertyValue('margin-left') == "580px") &&  ( checkBox3.checked)) ||
+          ((estilosCarga.getPropertyValue('margin-left') == "580px") && (checkBox1.checked)) 
+          ){
+            if(((estilosEnergia.getPropertyValue('margin-left') == "865px") &&  (checkBox4.checked )) ||
+            ((estilosTrabajo.getPropertyValue('margin-left') == "865px") &&  ( checkBox3.checked)) ||
+            ((estilosCarga.getPropertyValue('margin-left') == "865px") && (checkBox1.checked)) 
+            ){
+              codigoDivPotencial.style.marginLeft = "1150px"
+            }else{
+              codigoDivPotencial.style.marginLeft = "865px"
+            }
+          }else{
+             codigoDivPotencial.style.marginLeft = "580px"
+          }
+        }else{
+          codigoDivPotencial.style.marginLeft = "295px"
+        }  
     } else {
-      codigoDiv2.style.display = "none"
+      codigoDivPotencial.style.display = "none"
     }
-
+    //trabajo
     if (checkBox3.checked) {
-      codigoDiv3.style.display = "block"
-    } else {
-      codigoDiv3.style.display = "none"
-    }
-
+      codigoDivTrabajo.style.display = "block"
+      if(((estilosEnergia.getPropertyValue('margin-left') == "295px") &&  (checkBox4.checked )) ||
+      ((estilosCarga.getPropertyValue('margin-left') == "295px") &&  ( checkBox1.checked)) ||
+      ((estilosPotencial.getPropertyValue('margin-left') == "295px") && (checkBox2.checked)) 
+      ){
+        if(((estilosEnergia.getPropertyValue('margin-left') == "580px") &&  (checkBox4.checked )) ||
+        ((estilosCarga.getPropertyValue('margin-left') == "580px") &&  ( checkBox1.checked)) ||
+        ((estilosPotencial.getPropertyValue('margin-left') == "580px") && (checkBox2.checked)) 
+        ){
+            if(((estilosEnergia.getPropertyValue('margin-left') == "865px") &&  (checkBox4.checked )) ||
+            ((estilosCarga.getPropertyValue('margin-left') == "865px") &&  ( checkBox1.checked)) ||
+            ((estilosPotencial.getPropertyValue('margin-left') == "865px") && (checkBox2.checked)) 
+            ){
+              codigoDivTrabajo.style.marginLeft = "1150px"
+            }else{
+              codigoDivTrabajo.style.marginLeft = "865px"
+            }
+        }else{
+          codigoDivTrabajo.style.marginLeft = "580px"
+        }
+      }else{
+        codigoDivTrabajo.style.marginLeft = "295px"
+      }
+      } else {
+        codigoDivTrabajo.style.display = "none"
+      }
+    //energia
     if (checkBox4.checked) {
-      codigoDiv4.style.display = "block"
+      codigoDivEnergia.style.display = "block"
+      if(((estilosTrabajo.getPropertyValue('margin-left') == "295px") &&  (checkBox3.checked )) ||
+      ((estilosCarga.getPropertyValue('margin-left') == "295px") &&  ( checkBox1.checked)) ||
+      ((estilosPotencial.getPropertyValue('margin-left') == "295px") && (checkBox2.checked)) 
+      ){
+        if(((estilosTrabajo.getPropertyValue('margin-left') == "580px") &&  (checkBox3.checked )) ||
+        ((estilosCarga.getPropertyValue('margin-left') == "580px") &&  ( checkBox1.checked)) ||
+        ((estilosPotencial.getPropertyValue('margin-left') == "580px") && (checkBox2.checked)) 
+        ){
+            if(((estilosTrabajo.getPropertyValue('margin-left') == "865px") &&  (checkBox3.checked )) ||
+            ((estilosCarga.getPropertyValue('margin-left') == "865px") &&  ( checkBox1.checked)) ||
+            ((estilosPotencial.getPropertyValue('margin-left') == "865px") && (checkBox2.checked)) 
+            ){
+              codigoDivEnergias.style.marginLeft = "1150px"
+            }else{
+              codigoDivEnergia.style.marginLeft = "865px"
+            }
+        }else{
+          codigoDivEnergia.style.marginLeft = "580px"
+        }
+      }else{
+        codigoDivEnergia.style.marginLeft = "295px"
+        }
     } else {
-      codigoDiv4.style.display = "none"
+      codigoDivEnergia.style.display = "none"
     }
-  }
 
+    }
+
+  
+  
   function mostrarControles() {
     let controlcheckbox = document.getElementById("controles")
     let checkboxcontainer = document.getElementById("checkbox-container")
@@ -573,4 +675,3 @@ document.addEventListener("DOMContentLoaded", function (){
         checkboxcontainer.style.display = "none"
     }
   }
-

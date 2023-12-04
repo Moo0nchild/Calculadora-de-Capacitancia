@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Capacitancia</title>
+    <link rel="stylesheet" href="/Css/style2.css">
+</head>
+<body>
+
+  <h2 class="titulo">Calculadora de Capacitancia</h2>
+
+  <section>
+    <div class="capacitores">
+      <img class="bateria" src="/Assets/Bateria2-Positivo.png" alt="#">
+      <img class="circuito-vertical1" src="/Assets/Vertical.png" alt="#">
+      <img class="circuito-vertical2" src="/Assets/Vertical.png" alt="#">
+      <img class="baldosa1-vertical" src="/Assets/Baldosa vertical2.png" alt="#">
+      <img class="circuito-horizontal1" src="/Assets/Horizontal.png" alt="#">
+      <img class="baldosa3-vertical" src="/Assets/Baldosa vertical2.png" alt="#">
+      <img class="circuito-horizontal2" src="/Assets/Horizontal.png" alt="#">
+      <img class="baldosa2-vertical" src="/Assets/Baldosa vertical2.png" alt="#">
+      <img class="baldosa5-vertical" src="/Assets/Baldosa vertical2.png" alt="#">
+      <img class="circuito-horizontal3" src="/Assets/Horizontal.png" alt="#">
+      <img class="baldosa4-vertical" src="/Assets/Baldosa vertical2.png" alt="#">
+      <img class="circuito-horizontal4" src="/Assets/Horizontal.png" alt="#">
+      <img class="baldosa6-vertical" src="/Assets/Baldosa vertical2.png" alt="#">
+      <img class="circuito-horizontal10" src="/Assets/Horizontal.png" alt="#">
+      <img class="circuito-vertical3" src="/Assets/Vertical.png" alt="#">
+    </div>
+  </section>
+
+  <section>
+    <form action="/Html/index.html">
+      <label for="">
+        <button class="boton-paralelo"><span>Capacitor en Paralelo</span></button>
+      </label>
+    </form>
+  </section>
+
+  <section>
+    <div> 
+      <input type="range" class="voltaje-bateria" min="0" max="100" value="50"> 
+      <input type="range" class="slider1" min="0" max="100" value="50"> 
+      <input type="range" class="slider2" min="0" max="100" value="50"> 
+      <input type="range" class="slider3" min="0" max="100" value="50">
+      <input type="range" class="slider4" min="0" max="100" value="50">
+      <input type="range" class="slider5" min="0" max="100" value="50">
+      <input type="range" class="slider6" min="0" max="100" value="50">
+      <label for="">
+        <input type="text" class="inp-voltaje" value="0.00 V">
+        <input id="separacion1" type="text" class="separacion1" value="250 mm²" readonly>  
+        <input id="separacion2" type="text" class="separacion2" value="250 mm²" readonly>
+        <input id="separacion3" type="text" class="separacion3"  value = "7.5 mm" readonly>
+        <input id="separacion4" type="text" class="separacion4" value="7.5 mm" readonly>
+        <input id="separacion5" type="text" class="separacion5" value="250 mm²" readonly>
+        <input id="separacion6" type="text" class="separacion6" value="7.5 mm" readonly>
+      </label>
+      <label for="">
+        <div class="label-container">
+          <div class="capacitancia-individual">
+            <span>Capacitancia 1: </span><input id="capacitancia1" type="text">
+            <span>Capacitancia 2: </span><input id="capacitancia2" type="text">
+            <span>Capacitancia 3: </span><input id="capacitancia3" type="text">
+          </div>
+          <div class="capacitancia-total">
+            <span>Capacitancia Total: </span><input id="capacitanciaTotal" type="text">
+          </div>
+        </div>
+      </label>
+    </div>
+  </section>
+
+  <section>
+    <div id="cargaAlmacenada" class="container-barras">
+      <h3>Carga Almacenada</h3>
+      <div class="barra-capacitor">
+        <p id="carga1"><span>Capacitor 1</span>0.00×10⁰ C</p> 
+        <div  id="progreso1" class="progreso" style="--wth:0%"></div> 
+      </div>
+      <div class="barra-capacitor">
+        <p id="carga2"><span>Capacitor 2</span>0.00×10⁰ C</p> 
+        <div  id="progreso2" class="progreso" style="--wth:0%"></div>
+      </div>
+      <div class="barra-capacitor">
+        <p id="carga3"><span>Capacitor 3</span>0.00×10⁰ C</p> 
+        <div id="progreso3" class="progreso" style="--wth:0%"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div id="diferenciaPotencial" class="container-barras-diferencia">
+      <h3>Diferencia de Potencial</h3>
+      <div class="barra-capacitor-diferencia">
+        <p id="potencial1"><span>Capacitor 1</span>0.00×10⁰ v</p> 
+        <div id="progresoDiferencia1" class="progreso-diferencia" style="--wth:0%"></div> 
+      </div>
+      <div class="barra-capacitor-diferencia">
+        <p id="potencial2"><span>Capacitor 2</span>00.00×10⁰ v</p> 
+        <div id="progresoDiferencia2" class="progreso-diferencia" style="--wth:0%"></div>
+      </div>
+      <div  class="barra-capacitor-diferencia">
+        <p id="potencial3"><span>Capacitor 3</span>0.00×10⁰ v</p> 
+        <div id="progresoDiferencia3" class="progreso-diferencia" style="--wth:0%"></div>
+      </div>
+      <div class="barra-capacitor-diferencia">
+        <p id="potencial4"><span>Total </span>0 v</p>
+        <div id="progresoDiferencia4" class="progreso-diferencia" style="--wth:0%"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div id="trabj" class="container-barras-trabajo">
+      <h3>Trabajo</h3>
+      <div class="barra-capacitor-trabajo">
+        <p id="Trabajo1"><span>Capacitor 1</span>0.00×10⁰ J</p> 
+        <div id="progresotrabajo1" class="progreso-trabajo" style="--wth:0%"></div> 
+      </div>
+      <div class="barra-capacitor-trabajo">
+        <p id="Trabajo2"><span>Capacitor 2</span>0.00×10⁰ J</p> 
+        <div  id="progresotrabajo2" class="progreso-trabajo" style="--wth:0%"></div>
+      </div>
+      <div class="barra-capacitor-trabajo">
+        <p id="Trabajo3"><span>Capacitor 3</span>0.00×10⁰ J</p> 
+        <div id="progresotrabajo3" class="progreso-trabajo" style="--wth:0%"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div id="energiaAlmacenada" class="container-barras-energia">
+      <h3>Energia Almacenada</h3>
+      <div class="barra-capacitor-energia">
+        <p id="energia1"><span>Capacitor 1</span>0.00×10⁰ J</p> 
+        <div id="progresoEnergia1" class="progreso-energia" style="--wth:0%"></div> 
+      </div>
+      <div class="barra-capacitor-energia">
+        <p id="energia2"><span>Capacitor 2</span>0.00×10⁰ J</p> 
+        <div id="progresoEnergia2" class="progreso-energia" style="--wth:0%"></div> 
+      </div>
+      <div class="barra-capacitor-energia">
+        <p id="energia3"><span>Capacitor 3</span>0.00×10⁰ J</p> 
+        <div id="progresoEnergia3" class="progreso-energia" style="--wth:0%"></div> 
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="check-controles">
+      <label for="">
+        <div>
+          <input type="checkbox" id="controles" onchange="mostrarControles()"> Controles
+        </div>
+      </label>
+    </div>
+  </section>
+
+  <section>
+    <div class="checkbox-container" id="checkbox-container">
+      <label for="">
+        <div class="checkboxes">
+          <input type="checkbox" id="difPotencialCheck" onchange="mostrarOcultarCodigo()">Diferencia de Potencial
+        </div>
+        <div class="checkboxes">
+          <input type="checkbox" id="EnAlmacenadaCheck" onchange="mostrarOcultarCodigo()">Energia Almacenada
+        </div>
+        <div class="checkboxes">
+          <input type="checkbox" id="trabajoCheck" onchange="mostrarOcultarCodigo()">Trabajo
+        </div>
+        <div class="checkboxes">
+          <input type="checkbox" id="carAlmacenadaCheck" onchange="mostrarOcultarCodigo()">Carga Almacenada
+        </div>
+      </label>
+    </div>
+  </section>
+
+</body>
+<script src="/Javascript/script2.js"></script>
+</html>

@@ -364,6 +364,7 @@ body::-webkit-scrollbar {
 
 /* Slider Voltaje Bateria */
 .voltaje-bateria {
+  cursor: pointer;
   appearance: none;
   background: transparent;
   position: fixed;
@@ -448,7 +449,6 @@ body::-webkit-scrollbar {
   backdrop-filter: blur(15px);
   padding: 0 20px;
 }
-
 .container-barras-diferencia h3 {
   text-align: center;
   margin-top: 10px;
@@ -481,7 +481,6 @@ body::-webkit-scrollbar {
   height: 100%;
   background-color: green;
 } 
-
 .container-barras-trabajo {
   display: none;
   border-radius: 20px;
@@ -496,7 +495,6 @@ body::-webkit-scrollbar {
   backdrop-filter: blur(15px);
   padding: 0 20px;
 }
-
 .container-barras-trabajo h3 {
   text-align: center;
   margin-top: 10px;
