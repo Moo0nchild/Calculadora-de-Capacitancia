@@ -12,8 +12,9 @@ Este proyecto tiene como objetivo principal mejorar la enseñanza de capacitores
 
 ## Estructura del Repositorio
 
-- **`/Html`:** Contiene el código fuente del recurso digital.
-- **`/documentacion`:** Archivos relacionados con la documentación del proyecto.
+- **`/Html`:** Contiene las vistas del recurso digital.
+- **`/Css`:** Contiene los estilos del recurso digital.
+- **`/Javascript`:** Contiene el código fuente del recurso digital.
 - **`/Assets`:** Archivos de imágenes y gráficos utilizados en el proyecto.
 
 ## Documentacion
