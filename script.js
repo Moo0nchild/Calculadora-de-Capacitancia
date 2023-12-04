@@ -10,15 +10,20 @@ document.addEventListener("DOMContentLoaded", function () {
   let inputCapacitancia1 = document.getElementById("capacitancia1");
   let inputCapacitancia3 = null , inputCapacitancia4 = null
   let inputCapacitanciaTotal = document.getElementById("capacitanciaTotal");
-  let area1 = 7.5, distancia1 = 250
-  let area2 = 7.5, distancia2 = 250
-  let area3 = 7.5, distancia3 = 250
-  let area4 = 7.5, distancia4 = 250
-  let capacitancia1 = calcularCapacitanciaIndividual(area1, area2)
-  let capacitancia2 = calcularCapacitanciaIndividual( area2, area3)
+  let area1 = 250, distancia1 = 7.5
+  let area2 = 250, distancia2 = 7.5
+  let area3 = 250, distancia3 = 7.5
+  let area4 = 250, distancia4 = 7.5
+  let capacitancia1 = calcularCapacitanciaIndividual(area1, distancia1)
+  let capacitancia2 = calcularCapacitanciaIndividual( area2, distancia2)
   let capacitancia3 = 0
   let capacitancia4 = 0 
-
+  let voltaje_inicial = 0
+  let voltajeFinal = 0
+  let eliminarCapacitor = document.getElementById("eliminarCapacitor")
+  let añadirCapacitor = document.getElementById("añadircapacitor")
+  eliminarCapacitor.style.backgroundColor = "lightgrey"
+  eliminarCapacitor.disabled = true
   capacitancia1= calcularCapacitanciaIndividual(area1, distancia1)
   inputCapacitancia1.value = formatoNotacionConSubindice(capacitancia1) + " F"
   const rango1 = document.querySelector(".slider1");
@@ -32,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     actualizarDistancia(valorSlider1, "baldosa1", "baldosa2", 3, 4);
     console.log("actualizando..")
     actualizarInputCarga()
+    actualizarInputEnergia()
   });
   const rango3 = document.querySelector(".slider3");
   rango3.addEventListener("input", function () {
@@ -43,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     inputCapacitanciaTotal.value=formatoNotacionConSubindice((capacitancia1 + capacitancia2))+ " F"
     actualizarArea(valorSlider3, "baldosa1", "baldosa2", 3, 4);
     actualizarInputCarga()
+    actualizarInputEnergia()
   });
   // segundo capacitor
   const rango2 = document.querySelector(".slider2");
@@ -59,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     inputCapacitanciaTotal.value=formatoNotacionConSubindice((capacitancia1 + capacitancia2))+ " F"
     actualizarDistancia(valorSlider2, "baldosa3", "baldosa4", 5, 6);
     actualizarInputCarga()
+    actualizarInputEnergia()
   });
   const rango4 = document.querySelector(".slider4");
   rango4.addEventListener("input", function () {
@@ -70,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     inputCapacitanciaTotal.value=formatoNotacionConSubindice((capacitancia1 + capacitancia2))+ " F"
     actualizarArea(valorSlider4, "baldosa3", "baldosa4", 5, 6);
     actualizarInputCarga()
+    actualizarInputEnergia()
   });
 
   function actualizarDistancia(
@@ -87,32 +96,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const circuito2 = document.getElementById(
       "circuito-vertical" + circuitoNum2 + "-mid"
     );
-    console.log(valorSlider);
     if (valorSlider <= 49) {
+      
       if (
         elemento1.className === baldosaE1 + "-pequeño-mid" ||
-        elemento1.className === baldosaE1 + "-pequeño-low" ||
-        elemento1.className === baldosaE1 + "-pequeño-sup"
+        elemento1.className === baldosaE1 + "-pequeño-sup" ||
+        elemento1.className === baldosaE1 + "-pequeño-low"
       ) {
-        elemento1.className = baldosaE1 + "-pequeño-low";
-        elemento2.className = baldosaE2 + "-pequeño-low";
+        elemento1.className = baldosaE1 + "-pequeño-sup";
+        elemento2.className = baldosaE2 + "-pequeño-sup";
       } else if (
         elemento1.className === baldosaE1 + "-intermedio-mid" ||
-        elemento1.className === baldosaE1 + "-intermedio-low" ||
-        elemento1.className === baldosaE1 + "-intermedio-sup"
+        elemento1.className === baldosaE1 + "-intermedio-sup" ||
+        elemento1.className === baldosaE1 + "-intermedio-low"
       ) {
-        elemento1.className = baldosaE1 + "-intermedio-low";
-        elemento2.className = baldosaE2 + "-intermedio-low";
+        elemento1.className = baldosaE1 + "-intermedio-sup";
+        elemento2.className = baldosaE2 + "-intermedio-sup";
       } else if (
         elemento1.className === baldosaE1 + "-grande-mid" ||
-        elemento1.className === baldosaE1 + "-grande-low" ||
-        elemento1.className === baldosaE1 + "-grande-sup"
+        elemento1.className === baldosaE1 + "-grande-sup" ||
+        elemento1.className === baldosaE1 + "-grande-low"
       ) {
-        elemento1.className = baldosaE1 + "-grande-low";
-        elemento2.className = baldosaE2 + "-grande-low";
+        elemento1.className = baldosaE1 + "-grande-sup";
+        elemento2.className = baldosaE2 + "-grande-sup";
       }
-      circuito1.className = "circuito-vertical" + circuitoNum1 + "-low";
-      circuito2.className = "circuito-vertical" + circuitoNum2 + "-low";
+      circuito1.className = "circuito-vertical" + circuitoNum1 + "-sup";
+      circuito2.className = "circuito-vertical" + circuitoNum2 + "-sup";
     } else if (valorSlider <= 79) {
       if (
         elemento1.className === baldosaE1 + "-pequeño-mid" ||
@@ -141,28 +150,29 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (valorSlider >= 80) {
       if (
         elemento1.className === baldosaE1 + "-pequeño-mid" ||
-        elemento1.className === baldosaE1 + "-pequeño-sup" ||
-        elemento1.className === baldosaE1 + "-pequeño-low"
+        elemento1.className === baldosaE1 + "-pequeño-low" ||
+        elemento1.className === baldosaE1 + "-pequeño-sup"
       ) {
-        elemento1.className = baldosaE1 + "-pequeño-sup";
-        elemento2.className = baldosaE2 + "-pequeño-sup";
+        elemento1.className = baldosaE1 + "-pequeño-low";
+        elemento2.className = baldosaE2 + "-pequeño-low";
       } else if (
         elemento1.className === baldosaE1 + "-intermedio-mid" ||
-        elemento1.className === baldosaE1 + "-intermedio-sup" ||
-        elemento1.className === baldosaE1 + "-intermedio-low"
+        elemento1.className === baldosaE1 + "-intermedio-low" ||
+        elemento1.className === baldosaE1 + "-intermedio-sup"
       ) {
-        elemento1.className = baldosaE1 + "-intermedio-sup";
-        elemento2.className = baldosaE2 + "-intermedio-sup";
+        elemento1.className = baldosaE1 + "-intermedio-low";
+        elemento2.className = baldosaE2 + "-intermedio-low";
       } else if (
         elemento1.className === baldosaE1 + "-grande-mid" ||
-        elemento1.className === baldosaE1 + "-grande-sup" ||
-        elemento1.className === baldosaE1 + "-grande-low"
+        elemento1.className === baldosaE1 + "-grande-low" ||
+        elemento1.className === baldosaE1 + "-grande-sup"
       ) {
-        elemento1.className = baldosaE1 + "-grande-sup";
-        elemento2.className = baldosaE2 + "-grande-sup";
+        elemento1.className = baldosaE1 + "-grande-low"
+        elemento2.className = baldosaE2 + "-grande-low"
       }
-      circuito1.className = "circuito-vertical" + circuitoNum1 + "-sup";
-      circuito2.className = "circuito-vertical" + circuitoNum2 + "-sup";
+      circuito1.className = "circuito-vertical" + circuitoNum1 + "-low";
+      circuito2.className = "circuito-vertical" + circuitoNum2 + "-low";
+
     }
   }
   function actualizarArea(
@@ -270,12 +280,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return distancia + milimetro;
   }
 
-  const añadirCapacitor = document.getElementById("añadircapacitor");
+
   const contenedor = document.querySelector(".capacitancia-individual");
   const contenedorCapacitores = document.querySelector(".capacitores");
   let contador = 3;
   añadirCapacitor.addEventListener("click", () => {
     if (contador == 3) {
+      eliminarCapacitor.style.backgroundColor = "red" ;
+      eliminarCapacitor.disabled = false;
       const nuevoSpan = document.createElement("span");
       nuevoSpan.textContent = `Capacitancia ${contador}: `;
       const nuevoInput = document.createElement("input");
@@ -307,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
       inputCapacitanciaTotal.value=formatoNotacionConSubindice((capacitancia1 + capacitancia2 + capacitancia3))+ " F"
       rango4.addEventListener("input", function () {
         const valorSlider4 = parseFloat(rango4.value);
-        distancia3 = convertirArea(valorSlider4);
+        distancia3 = convertirDistancia(valorSlider4);
         capacitancia3= calcularCapacitanciaIndividual(area3, distancia3)
         inputCapacitancia3.value = formatoNotacionConSubindice(capacitancia3) + " F"
         inputCapacitanciaTotal.value=formatoNotacionConSubindice((capacitancia1 + capacitancia2 + capacitancia3))+ " F"
@@ -315,6 +327,7 @@ document.addEventListener("DOMContentLoaded", function () {
         distanciaCapacitor3.value = convertirDistancia(valorSlider4) + " mm";
         actualizarDistancia(valorSlider4, "baldosa5", "baldosa6", 7, 8);
         actualizarInputCarga()
+        actualizarInputEnergia()
       });
       const rango5 = document.querySelector(".slider-añadido2");
       rango5.addEventListener("input", function () {
@@ -326,10 +339,15 @@ document.addEventListener("DOMContentLoaded", function () {
         areaCapacitor3.value = convertirArea(valorSlider5) + " mm²";
         actualizarArea(valorSlider5, "baldosa5", "baldosa6", 7, 8);
         actualizarInputCarga()
-      });
+        actualizarInputEnergia()
+      })
       contador++;
+      actualizarInputCarga()
+      actualizarInputEnergia()
       actualizarInputDiferenciaPotencial()
     } else if (contador == 4) {
+      añadirCapacitor.style.backgroundColor = "lightgrey";
+      añadirCapacitor.disabled = true;
       const nuevoSpan = document.createElement("span");
       nuevoSpan.textContent = `Capacitancia ${contador}: `;
       const nuevoInput = document.createElement("input");
@@ -362,13 +380,14 @@ document.addEventListener("DOMContentLoaded", function () {
       inputCapacitanciaTotal.value=formatoNotacionConSubindice((capacitancia1 + capacitancia2 + capacitancia3 + capacitancia4))+ " F"
       rango6.addEventListener("input", function () {
         const valorSlider6 = parseFloat(rango6.value);
-        distancia4 = convertirArea(valorSlider6);
+        distancia4 = convertirDistancia(valorSlider6)
         capacitancia4= calcularCapacitanciaIndividual(area4, distancia4)
         inputCapacitancia4.value = formatoNotacionConSubindice(capacitancia4) + " F"
         inputCapacitanciaTotal.value=formatoNotacionConSubindice((capacitancia1 + capacitancia2 + capacitancia3 + capacitancia4))+ " F"
         distanciaCapacitor4.value = convertirDistancia(valorSlider6) + " mm";
         actualizarDistancia(valorSlider6, "baldosa7", "baldosa8", 9, 10);
         actualizarInputCarga()
+        actualizarInputEnergia()
       });
       const rango5 = document.querySelector(".slider-añadido4");
       rango5.addEventListener("input", function () {
@@ -380,18 +399,14 @@ document.addEventListener("DOMContentLoaded", function () {
         areaCapacitor4.value = convertirArea(valorSlider7) + " mm²";
         actualizarArea(valorSlider7, "baldosa7", "baldosa8", 9, 10);
         actualizarInputCarga()
+        actualizarInputEnergia()
       });
       actualizarInputDiferenciaPotencial()
-      añadirCapacitor.style.backgroundColor = "lightgrey";
-      añadirCapacitor.disabled = true;
-    }
-    if (contador == 4) {
-      eliminarCapacitor.style.backgroundColor = "";
-      eliminarCapacitor.disabled = false;
+      actualizarInputEnergia()
+      actualizarInputCarga()
     }
   });
 
-  const eliminarCapacitor = document.getElementById("eliminarCapacitor");
 
   eliminarCapacitor.addEventListener("click", () => {
     const conjuntosElementos = contenedorCapacitores.querySelectorAll("div");
@@ -403,6 +418,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const ultimoConjunto = conjuntosElementos[conjuntosElementos.length - 1];
       const ultimo = conjunto[conjunto.length - 1];
       const ulti = co[co.length - 1];
+      let capacitanciaTotal
 
       // Elimina también los elementos span e input asociados
       contenedorCapacitores.removeChild(ultimoConjunto);
@@ -413,14 +429,25 @@ document.addEventListener("DOMContentLoaded", function () {
       if (contador > 3) {
         contador--;
       }
-
       // Actualiza la lógica para habilitar/deshabilitar los botones según el contador
       if (contador == 3) {
-        eliminarCapacitor.style.backgroundColor = "lightgrey";
-        eliminarCapacitor.disabled = true;
+        eliminarCapacitor.style.backgroundColor = "lightgrey"
+        eliminarCapacitor.disabled = true
+        capacitancia3 = 0
+        capacitanciaTotal = capacitancia1 + capacitancia2 
+        inputCapacitanciaTotal.value = formatoNotacionConSubindice(capacitanciaTotal) + " F"  
+        actualizarInputCarga()
+        actualizarInputDiferenciaPotencial()
+        actualizarInputEnergia()
+        actualizarInputTrabajo()
       } else if (contador == 4) {
-        añadirCapacitor.style.backgroundColor = "";
-        añadirCapacitor.disabled = false;
+        añadirCapacitor.style.backgroundColor = ""
+        añadirCapacitor.disabled = false
+        capacitancia4= 0
+        actualizarInputCarga()
+        actualizarInputDiferenciaPotencial()
+        actualizarInputEnergia()
+        actualizarInputTrabajo()
       }
       actualizarInputDiferenciaPotencial()
     }
@@ -432,8 +459,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   function calcularCapacitanciaIndividual(area, distancia) {
     const constantePermitividad = 8.8541878176e-12;
-    const capacitancia = (constantePermitividad * area) / (distancia ** 2);
-    return capacitancia;
+    const areaMetros = area/1000000
+    const distanciaMetros = distancia/1000  
+    const capacitancia = (constantePermitividad * areaMetros) / (distanciaMetros);
+    return capacitancia
   }
   
   function formatoNotacionConSubindice(capacitancia) {
@@ -463,16 +492,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return `${coeficiente.toFixed(2)}×10${exponenteUnicode}`;
   }
   //calcular carga 
-  let carga1, carga2, carga3, carga4, valorSliderVoltaje, diferenciaPotencialFuente, capacitanciaTotal,cargaTotal
-  let cargaCapacitor1, cargaCapacitor2, cargaCapacitor3, cargaCapacitor4
+  let valorSliderVoltaje, diferenciaPotencialFuente, capacitanciaTotal,cargaTotal
+  let cargaCapacitor1= 0, cargaCapacitor2= 0, cargaCapacitor3= 0, cargaCapacitor4 = 0
   let energiaAlmacenada1, energiaAlmacenada2, energiaAlmacenada3, energiaAlmacenada4, energiaAlmacenadaTotal
-  carga1 = document.getElementById("carga1")
-  carga2 = document.getElementById("carga2")
-  carga3 = document.getElementById("carga3")
-  carga4 = document.getElementById("carga4")
   let voltajeBateria = document.querySelector(".voltaje-bateria")
   voltajeBateria.addEventListener("input", function () { 
-    inputVoltaje = document.querySelector(".inp-voltaje")
+    const inputVoltaje = document.querySelector(".inp-voltaje")
     valorSliderVoltaje = parseFloat(voltajeBateria.value)
     actualizarInputCarga()
     actualizarInputDiferenciaPotencial()
@@ -483,12 +508,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }else{
       imgBateria.src= "Bateria2-Positivo.png"
     }
-    energiaAlmacenada1 = (1*(capacitancia1 * (capacitanciaTotal**2))/2)
-    energiaAlmacenada2 = (1*(capacitancia2 * (capacitanciaTotal**2))/2)
-    energiaAlmacenada3 = (1*(capacitancia3 * (capacitanciaTotal**2))/2)
-    energiaAlmacenada4 = (1*(capacitancia4 * (capacitanciaTotal**2))/2)
-    energiaAlmacenadaTotal = energiaAlmacenada1 +energiaAlmacenada2 +energiaAlmacenada3 + energiaAlmacenada4
+    actualizarInputEnergia()
     
+    actualizarInputTrabajo()
   })
 
 //calcular diferencia de potencial
@@ -498,15 +520,35 @@ document.addEventListener("DOMContentLoaded", function () {
   potencial3 = document.getElementById("potencial3")
   potencial4 = document.getElementById("potencial4")
 
+    //Trabajo 
+  let trabajo1 = document.getElementById("Trabajo1");
+  let trabajo2 = document.getElementById("Trabajo2");
+  let trabajo3 = document.getElementById("Trabajo3");
+  let trabajo4 = document.getElementById("Trabajo4");
+  
+  // calcular energia acomulada
+  let energia1= document.getElementById("energia1")
+  let energia2= document.getElementById("energia2")
+  let energia3= document.getElementById("energia3")
+  let energia4= document.getElementById("energia4")
+  //carga
+  let carga1 = document.getElementById("carga1")
+  let carga2 = document.getElementById("carga2")
+  let carga3 = document.getElementById("carga3")
+  let carga4 = document.getElementById("carga4")
   function actualizarInputDiferenciaPotencial(){
     try {
       potencial1.innerHTML = `<span>Capacitor 1</span>${Math.abs(diferenciaPotencialFuente.toFixed(2)) + " V"}`
       potencial2.innerHTML = `<span>Capacitor 2</span>${Math.abs(diferenciaPotencialFuente.toFixed(2)) + " V"}`
-      if( inputCapacitancia3 !== null){
+      if( capacitancia3 != 0){
         potencial3.innerHTML = `<span>Capacitor 3</span>${Math.abs(diferenciaPotencialFuente.toFixed(2)) + " V"}`
+      }else{
+        potencial3.innerHTML = `<span>Capacitor 3</span>${0+" V"}`
       }
-      if( inputCapacitancia4 !== null){
+      if( capacitancia4 !=0){
         potencial4.innerHTML = `<span>Capacitor 4</span>${Math.abs(diferenciaPotencialFuente.toFixed(2)) + " V"}`
+      }else{
+        potencial4.innerHTML = `<span>Capacitor 4</span>${0+ " V"}`
       }
   } catch (error) {
     potencial1.innerHTML = `<span>Capacitor 1</span>${0 + " V"}`
@@ -515,21 +557,40 @@ document.addEventListener("DOMContentLoaded", function () {
     potencial4.innerHTML = `<span>Capacitor 4</span>${0+ " V"}`
     
       console.error('Se produjo un error:', error.message);
-      
   }
+   calcularPorcentajeVoltaje()
   }
   function actualizarInputCarga(){
     diferenciaPotencialFuente =  calcularVoltaje(valorSliderVoltaje)
-    capacitanciaTotal = capacitancia1 + capacitancia2 + capacitancia3 + capacitancia4 
-    cargaTotal=  calcularCarga(capacitanciaTotal, diferenciaPotencialFuente)
-    cargaCapacitor1 = calcularCarga(capacitancia1,diferenciaPotencialFuente) 
-    cargaCapacitor2 = calcularCarga(capacitancia2,diferenciaPotencialFuente)
-    cargaCapacitor3 = calcularCarga(capacitancia3,diferenciaPotencialFuente)
-    cargaCapacitor4 = calcularCarga(capacitancia4,diferenciaPotencialFuente)
-    carga1.innerHTML = `<span>Capacitor 1</span>${formatoNotacionConSubindice(cargaCapacitor1) + " C"}`;
-    carga2.innerHTML = `<span>Capacitor 2</span>${formatoNotacionConSubindice(cargaCapacitor2) + " C"}`;
-    carga3.innerHTML = `<span>Capacitor 3</span>${formatoNotacionConSubindice(cargaCapacitor3) + " C"}`;
-    carga4.innerHTML = `<span>Capacitor 4</span>${formatoNotacionConSubindice(cargaCapacitor4) + " C"}`;
+    if(!isNaN(diferenciaPotencialFuente)){
+      capacitanciaTotal = capacitancia1 + capacitancia2 + capacitancia3 + capacitancia4 
+      cargaTotal=  calcularCarga(capacitanciaTotal, diferenciaPotencialFuente)
+      cargaCapacitor1 = calcularCarga(capacitancia1,diferenciaPotencialFuente) 
+      cargaCapacitor2 = calcularCarga(capacitancia2,diferenciaPotencialFuente)
+      cargaCapacitor3 = calcularCarga(capacitancia3,diferenciaPotencialFuente)
+      cargaCapacitor4 = calcularCarga(capacitancia4,diferenciaPotencialFuente)
+      carga1.innerHTML = `<span>Capacitor 1</span>${formatoNotacionConSubindice(cargaCapacitor1) + " C"}`;
+      carga2.innerHTML = `<span>Capacitor 2</span>${formatoNotacionConSubindice(cargaCapacitor2) + " C"}`;
+      carga3.innerHTML = `<span>Capacitor 3</span>${formatoNotacionConSubindice(cargaCapacitor3) + " C"}`;
+      carga4.innerHTML = `<span>Capacitor 4</span>${formatoNotacionConSubindice(cargaCapacitor4) + " C"}`;
+      calcularPorcentajeCarga()
+      actualizarInputTrabajo()
+    }
+  }
+  function actualizarInputEnergia(){
+    if(!isNaN(diferenciaPotencialFuente)){
+      energiaAlmacenada1 = (1*(capacitancia1 * (diferenciaPotencialFuente**2))/2)
+      energiaAlmacenada2 = (1*(capacitancia2 * (diferenciaPotencialFuente**2))/2)
+      energiaAlmacenada3 = (1*(capacitancia3 * (diferenciaPotencialFuente**2))/2)
+      energiaAlmacenada4 = (1*(capacitancia4 * (diferenciaPotencialFuente**2))/2)
+      energiaAlmacenadaTotal = energiaAlmacenada1 +energiaAlmacenada2 +energiaAlmacenada3 + energiaAlmacenada4
+      console.log("Energia almacenada total : "+formatoNotacionConSubindice( energiaAlmacenadaTotal) + " J")
+      energia1.innerHTML = `<span>Capacitor 1</span>${formatoNotacionConSubindice(energiaAlmacenada1) + " J"}`
+      energia2.innerHTML = `<span>Capacitor 2</span>${formatoNotacionConSubindice(energiaAlmacenada2) + " J"}`
+      energia3.innerHTML = `<span>Capacitor 3</span>${formatoNotacionConSubindice(energiaAlmacenada3) + " J"}`
+      energia4.innerHTML = `<span>Capacitor 4</span>${formatoNotacionConSubindice(energiaAlmacenada4) + " J"}`
+      calcularPorcentajeEnergia()
+    }
   }
   function calcularCarga(capacitancia, diferenciaPotencial){
     const cargaTotal =Math.abs( capacitancia * diferenciaPotencial) // valor absoluto de la carga total 
@@ -543,8 +604,86 @@ document.addEventListener("DOMContentLoaded", function () {
     const voltaje = voltajeMinimo + (valorRango * valorPorPaso)
     return voltaje;
   }
-});
+  let Inputtrabajo1, Inputtrabajo2, Inputtrabajo3, Inputtrabajo4
+  function actualizarInputTrabajo() {
+    const diferenciaPotencial = Math.abs(diferenciaPotencialFuente.toFixed(2))
+    Inputtrabajo1 = calcularTrabajo(diferenciaPotencial, cargaCapacitor1)
+    Inputtrabajo2 = calcularTrabajo(diferenciaPotencial, cargaCapacitor2)
+    Inputtrabajo3 = calcularTrabajo(diferenciaPotencial, cargaCapacitor3 )
+    Inputtrabajo4 = calcularTrabajo(diferenciaPotencial,cargaCapacitor4)
+    trabajo1.innerHTML = `<span>Capacitor 1</span>${formatoNotacionConSubindice(Inputtrabajo1) + " J"}`
+    trabajo2.innerHTML = `<span>Capacitor 2</span>${formatoNotacionConSubindice(Inputtrabajo2) + " J"}`
+    trabajo3.innerHTML = `<span>Capacitor 3</span>${formatoNotacionConSubindice(Inputtrabajo3) + " J"}`
+    trabajo4.innerHTML = `<span>Capacitor 4</span>${formatoNotacionConSubindice(Inputtrabajo4) + " J"}`
+    voltaje_inicial= voltajeFinal
+    calcularPorcentajeTrabajo()
+}
 
+function calcularTrabajo( diferenciaPotencial, carga) {
+   const trabajo = diferenciaPotencial * carga
+    return trabajo
+}
+
+  function calcularPorcentajeCarga(){
+    const progreso1 = document.getElementById("progreso1")
+    const progreso2 = document.getElementById("progreso2")
+    const progreso3 = document.getElementById("progreso3")
+    const progreso4 = document.getElementById("progreso4")
+    const porcentaje1 = (cargaCapacitor1 / 1.06e-12 ) * 100
+    const porcentaje2 = (cargaCapacitor2 / 1.06e-12) * 100
+    const porcentaje3 = (cargaCapacitor3 / 1.06e-12) * 100
+    const porcentaje4 = (cargaCapacitor4 / 1.06e-12) * 100
+    progreso1.style.setProperty("--wth", `${porcentaje1.toFixed(5)}%`)
+    progreso2.style.setProperty("--wth", `${porcentaje2.toFixed(5)}%`)
+    progreso3.style.setProperty("--wth", `${porcentaje3.toFixed(5)}%`)
+    progreso4.style.setProperty("--wth", `${porcentaje4.toFixed(5)}%`)
+  }
+  function calcularPorcentajeEnergia(){
+    const progreso1 = document.getElementById("progresoEnergia1")
+    const progreso2 = document.getElementById("progresoEnergia2")
+    const progreso3 = document.getElementById("progresoEnergia3")
+    const progreso4 = document.getElementById("progresoEnergia4")
+    const porcentaje1 = (energiaAlmacenada1 / 7.97e-13) * 100
+    const porcentaje2 = (energiaAlmacenada2 / 7.97e-13) * 100
+    const porcentaje3 = (energiaAlmacenada3 / 7.97e-13) * 100
+    const porcentaje4 = (energiaAlmacenada4 / 7.97e-13) * 100
+    progreso1.style.setProperty("--wth", `${porcentaje1.toFixed(5)}%`)
+    progreso2.style.setProperty("--wth", `${porcentaje2.toFixed(5)}%`)
+    progreso3.style.setProperty("--wth", `${porcentaje3.toFixed(5)}%`)
+    progreso4.style.setProperty("--wth", `${porcentaje4.toFixed(5)}%`)
+  }
+  function calcularPorcentajeVoltaje(){
+    const progreso1 = document.getElementById("progresoDiferencia1")
+    const progreso2 = document.getElementById("progresoDiferencia2")
+    const progreso3 = document.getElementById("progresoDiferencia3")
+    const progreso4 = document.getElementById("progresoDiferencia4")
+    const porcentaje1 = (diferenciaPotencialFuente / 150) * 10000
+    const porcentaje2 = (diferenciaPotencialFuente / 150) * 10000
+    const porcentaje3 = (diferenciaPotencialFuente / 150) * 10000
+    const porcentaje4 = (diferenciaPotencialFuente / 150) * 10000
+    progreso1.style.setProperty("--wth", `${Math.abs(porcentaje1)}%`)
+    progreso2.style.setProperty("--wth", `${Math.abs(porcentaje2)}%`)
+    progreso3.style.setProperty("--wth", `${Math.abs(porcentaje3)}%`)
+    progreso4.style.setProperty("--wth", `${Math.abs(porcentaje4)}%`)
+  }
+  function calcularPorcentajeTrabajo(){
+    const progreso1 = document.getElementById("progresotrabajo1")
+    const progreso2 = document.getElementById("progresotrabajo2")
+    const progreso3 = document.getElementById("progresotrabajo3")
+    const progreso4 = document.getElementById("progresotrabajo4")
+    const porcentaje1 = (Inputtrabajo1 / 1.59e-12 ) * 100
+    const porcentaje2 = (Inputtrabajo2 / 1.59e-12) * 100
+    const porcentaje3 = (Inputtrabajo3 / 1.59e-12) * 100
+    const porcentaje4 = (Inputtrabajo4 / 1.59e-12) * 100
+    progreso1.style.setProperty("--wth", `${porcentaje1.toFixed(5)}%`)
+    progreso2.style.setProperty("--wth", `${porcentaje2.toFixed(5)}%`)
+    progreso3.style.setProperty("--wth", `${porcentaje3.toFixed(5)}%`)
+    progreso4.style.setProperty("--wth", `${porcentaje4.toFixed(5)}%`)
+  }
+  
+  
+ 
+})
 
 function mostrarOcultarCodigo() {
   let checkBox1 = document.getElementById("carAlmacenadaCheck")
@@ -578,5 +717,16 @@ function mostrarOcultarCodigo() {
     codigoDiv4.style.display = "block"
   } else {
     codigoDiv4.style.display = "none"
+  }
+}
+
+function mostrarControles() {
+  let controlcheckbox = document.getElementById("controles")
+  let checkboxcontainer = document.getElementById("checkbox-container")
+
+  if (controlcheckbox.checked) {
+      checkboxcontainer.style.display = "block"
+  } else {
+      checkboxcontainer.style.display = "none"
   }
 }
